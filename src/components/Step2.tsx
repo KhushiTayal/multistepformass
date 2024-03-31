@@ -36,7 +36,7 @@ const Step2: React.FC<Step2Props> = ({ formData, handleChange, prevStep, nextSte
           <input
             type="date"
             id="birthDate"
-            className="step1-input"
+            className="step2-input"
             value={birthDate}
             onChange={(e) => handleChange('birthDate', e.target.value)}
           />
@@ -51,6 +51,7 @@ const Step2: React.FC<Step2Props> = ({ formData, handleChange, prevStep, nextSte
           <label htmlFor="language" className="step1-label">Language</label>
           <select
             id="language"
+            className="step2-input"
             value={language}
             onChange={(e) => handleChange('language', e.target.value)}
           >

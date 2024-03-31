@@ -43,10 +43,16 @@ color: rgba(66, 66, 66, 1);
 }
   
   .step1-input {
-    border: 1px solid rgba(205, 210, 215, 1);
-    padding: 8px;
-    width: 100%;
-    margin-bottom: 10px;
+    width: 452px;
+height: Hug (48px)px;
+padding: 12px 16px 12px 16px;
+gap: 0px;
+border-radius: 4px;
+border: 1px;
+justify: space-between;
+opacity: 0px;
+border: 1px solid rgba(205, 210, 215, 1)
+
   }
   
   .step1-label {
@@ -175,15 +181,17 @@ opacity: 0px;
 
   .business-input{
     width: 730px;
-height: 45px;
+height: 20px;
 padding: 12px 16px 12px 16px;
+margin-bottom: 8px;
 gap: 0px;
 border-radius: 4px;
-justify-content: space-between;
+border: 1px;
+justify: space-between;
 opacity: 0px;
 background: rgba(255, 255, 255, 1);
-color: black;
 border: 1px solid rgba(205, 210, 215, 1);
+
   }
 
   .plus-svg{
@@ -206,15 +214,14 @@ opacity: 0px;
     display: flex;
   justify-content: space-between; /* Align items to the ends */
   align-items: center;
-    width: 386px;
-height: 48px;
+  width: Hug (386px)px;
+height: Hug (48px)px;
 padding: 12px 16px 12px 16px;
-margin-right: 16px;
 gap: 8px;
 border-radius: 4px;
-border: 1px solid rgba(158, 158, 158, 1);
+border: 1px 0px 0px 0px;
 opacity: 0px;
-background: rgba(236, 255, 250, 1);
+border: 1px solid rgba(158, 158, 158, 1)
 /* border: 1px solid rgba(34, 167, 133, 1); */
   }
 

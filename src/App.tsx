@@ -3,9 +3,9 @@ import Step1 from './components/Step1';
 import Step2 from './components/Step2';
 import Step3 from './components/Step3';
 import "./App.css";
-// import "@fontsource/poppins"; // Defaults to weight 400
-// import "@fontsource/poppins/400.css"; // Specify weight
-// import "@fontsource/poppins/400-italic.css"; // Specify weight and style
+import "@fontsource/poppins"; // Defaults to weight 400
+import "@fontsource/poppins/400.css"; // Specify weight
+import "@fontsource/poppins/400-italic.css"; // Specify weight and style
 
 const App: React.FC = () => {
   const [formData, setFormData] = useState({
