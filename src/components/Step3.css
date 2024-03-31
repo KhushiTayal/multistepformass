@@ -1,0 +1,38 @@
+.step3-container{
+    width: Fill (1,320px)px;
+height: Hug (771px)px;
+padding: 40px 20px 40px 20px;
+gap: 40px;
+border-radius: 20px 0px 0px 0px;
+opacity: 0px;
+
+}
+
+.toggle-copycode{
+    display: flex;
+    width: 1280px;
+height: 24px;
+gap: 80px;
+opacity: 0px;
+
+}
+
+.toggle-one{
+    display: flex;
+    width: 263px;
+height: 24px;
+gap: 0px;
+justify: space-between;
+opacity: 0px;
+
+}
+
+.toggle-two{
+    display: flex;
+    width: Fixed (312px)px;
+height: Hug (24px)px;
+gap: 0px;
+justify: space-between;
+opacity: 0px;
+
+}
