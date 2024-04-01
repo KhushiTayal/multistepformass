@@ -47,6 +47,11 @@ const Step1: React.FC<Step1Props> = ({ formData, handleChange, nextStep }) => {
     nextStep();
   };
 
+  const handleRadioClick = (value: string) => {
+    //setFormData({ ...formData, selectAnything: value });
+    handleChange('selectAnything', value);
+  };
+
   return (
     <form onSubmit={handleNext} className="step1-container">
         {/* <div className="header">
@@ -150,7 +155,10 @@ const Step1: React.FC<Step1Props> = ({ formData, handleChange, nextStep }) => {
   <span className="step1-label">Select Anything</span>
   <span className="span-two">lorem loe lorem lorem lorem</span>
   <div className="select">
-      <div className="sub-select-anything-container flex items-center">
+      <div className={`sub-select-anything-container flex items-center ${
+            selectAnything === 'Option 1' ? 'selected' : ''
+          }`}
+          onClick={() => handleRadioClick('Option 1')}>
         <div className="mr-2">
           <label className="select-radio-label">Option 1</label>
         </div>
@@ -163,7 +171,10 @@ const Step1: React.FC<Step1Props> = ({ formData, handleChange, nextStep }) => {
           className="select-radio-input w-12 h-12"
         />
       </div>
-      <div className="sub-select-anything-container flex items-center">
+      <div className={`sub-select-anything-container flex items-center ${
+            selectAnything === 'Option 2' ? 'selected' : ''
+          }`}
+          onClick={() => handleRadioClick('Option 2')}>
         <div className="mr-2">
           <label className="select-radio-label">Option 2</label>
         </div>
@@ -176,7 +187,10 @@ const Step1: React.FC<Step1Props> = ({ formData, handleChange, nextStep }) => {
           className="select-radio-input"
         />
       </div>
-      <div className="sub-select-anything-container flex items-center">
+      <div className={`sub-select-anything-container flex items-center ${
+            selectAnything === 'Option 3' ? 'selected' : ''
+          }`}
+          onClick={() => handleRadioClick('Option 3')}>
         <div className="mr-2">
           <label className="select-radio-label">Option 3</label>
         </div>
@@ -189,7 +203,10 @@ const Step1: React.FC<Step1Props> = ({ formData, handleChange, nextStep }) => {
           className="select-radio-input"
         />
       </div>
-      <div className="sub-select-anything-container flex items-center">
+      <div className={`sub-select-anything-container flex items-center ${
+            selectAnything === 'Option 4' ? 'selected' : ''
+          }`}
+          onClick={() => handleRadioClick('Option 4')}>
         <div className="mr-2">
           <label className="select-radio-label">Option 4</label>
         </div>
@@ -197,12 +214,15 @@ const Step1: React.FC<Step1Props> = ({ formData, handleChange, nextStep }) => {
           type="radio"
           name="selectAnything"
           value="Option 4"
-          checked={selectAnything === 'Option 4'}
-          onChange={handleInputChange}
+          checked={formData.selectAnything === 'Option 4'}
+          onChange={() => {}}
           className="select-radio-input"
         />
       </div>
-      <div className="sub-select-anything-container flex items-center">
+      <div className={`sub-select-anything-container flex items-center ${
+            selectAnything === 'Option 5' ? 'selected' : ''
+          }`}
+          onClick={() => handleRadioClick('Option 5')}>
         <div className="mr-2">
           <label className="select-radio-label">Option 5</label>
         </div>
@@ -222,14 +242,15 @@ const Step1: React.FC<Step1Props> = ({ formData, handleChange, nextStep }) => {
 
       <div className="consent">
         <label className="step1-label">Consent:</label>
-        <label>
+        <label className="consent-text">
           <input
             type="checkbox"
             name="consent"
             checked={consent}
+            className="consent-box"
             onChange={handleCheckboxChange}
           />
-          I agree to the terms and conditions
+          The Information provided above is correct & would like to get call from a sales advisor.
         </label>
       </div>
 

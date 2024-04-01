@@ -49,43 +49,49 @@ const App: React.FC = () => {
         <div className="header-two">Please Provide the Required Details and complete all the steps</div>
         </div>
 
-      <div className="stepper">
-      <svg
-        width="30"
-        height="30"
-        viewBox="0 0 30 30"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ cursor: 'pointer' }}
-        onClick={() => setStep(1)}
-      >
-        <circle cx="15" cy="15" r="14.5" fill="#707070" />
-        <circle cx="15" cy="15" r="8.5" fill={step >= 1 ? '#3CC055' : 'white'} />
-      </svg>
-      <svg
-        width="30"
-        height="30"
-        viewBox="0 0 30 30"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ cursor: 'pointer', marginLeft: '50px', marginRight: '50px' }}
-        onClick={() => setStep(2)}
-      >
-        <circle cx="15" cy="15" r="14.5" fill="#707070" />
-        <circle cx="15" cy="15" r="8.5" fill={step >= 2 ? '#3CC055' : 'white'} />
-      </svg>
-      <svg
-        width="30"
-        height="30"
-        viewBox="0 0 30 30"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ cursor: 'pointer' }}
-        onClick={() => setStep(3)}
-      >
-        <circle cx="15" cy="15" r="14.5" fill="#707070" />
-        <circle cx="15" cy="15" r="8.5" fill={step >= 3 ? '#3CC055' : 'white'} />
-      </svg>
+        <div className="stepper">
+        <div className="step-container" onClick={() => setStep(1)}>
+          <div className="step">Step 1 Name</div>
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ cursor: 'pointer' }}
+          >
+            <circle cx="15" cy="15" r="14.5" fill="#707070" />
+            <circle cx="15" cy="15" r="8.5" fill={step >= 1 ? '#3CC055' : 'white'} />
+          </svg>
+        </div>
+        <div className="step-container" onClick={() => setStep(2)}>
+          <div className="step">Step 2 Detail</div>
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ cursor: 'pointer' }}
+          >
+            <circle cx="15" cy="15" r="14.5" fill="#707070" />
+            <circle cx="15" cy="15" r="8.5" fill={step >= 2 ? '#3CC055' : 'white'} />
+          </svg>
+        </div>
+        <div className="step-container" onClick={() => setStep(3)}>
+          <div className="step">Step 3 Finish</div>
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ cursor: 'pointer' }}
+          >
+            <circle cx="15" cy="15" r="14.5" fill="#707070" />
+            <circle cx="15" cy="15" r="8.5" fill={step >= 3 ? '#3CC055' : 'white'} />
+          </svg>
+        </div>
       </div>
         
       {step === 1 && <Step1 formData={formData} handleChange={handleChange} nextStep={nextStep} />}

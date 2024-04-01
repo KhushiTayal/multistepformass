@@ -78,6 +78,7 @@ color: rgba(125, 125, 125, 1);
     width: Hug (233px)px;
 height: Hug (18px)px;
 gap: 4px;
+margin-top: 8px;
 opacity: 0px;
 
   }
@@ -282,5 +283,33 @@ height: 84px;
 gap: 12px;
 margin-top: 30px;
 margin-bottom: 10px;
+
+  }
+
+  .selected {
+    background: rgba(236, 255, 250, 1);
+    border: 1px solid rgba(34, 167, 133, 1);
+  
+  }
+
+  .consent-text{
+    display: flex;
+    font-family: Poppins;
+font-size: 14px;
+font-weight: 500;
+line-height: 21px;
+text-align: left;
+color: rgba(117, 117, 117, 1);
+
+  }
+
+  .consent-box{
+    width: 19.07px;
+height: 19.07px;
+top: 1.47px;
+left: 1.47px;
+gap: 0px;
+opacity: 0px;
+background: rgba(158, 158, 158, 1);
 
   }

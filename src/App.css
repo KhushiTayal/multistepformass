@@ -70,3 +70,17 @@ opacity: 0px;
   height: 1px; /* Height of the line */
   background-color: black; /* Color of the line */
 }
+
+.step{
+  width: 112px;
+height: 29px;
+gap: 0px;
+opacity: 0px;
+font-family: Poppins;
+font-size: 18px;
+font-weight: 500;
+line-height: 28.8px;
+text-align: center;
+color: rgba(112, 112, 112, 1);
+
+}
