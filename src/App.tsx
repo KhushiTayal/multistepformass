@@ -29,10 +29,6 @@ const App: React.FC = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // const handleSubmit = () => {
-  //   console.log('Form submitted:', formData);
-  //   // Here you can implement the logic to send formData to Xano backend
-  // };
 
   const finish = () => {
     console.log('Finishing the step');
@@ -48,7 +44,7 @@ const App: React.FC = () => {
 
       <div className="stepper flex justify-between p-5 gap-10">
         <div className="step-container items-center gap-5 cursor-pointer" onClick={() => setStep(1)}>
-          <div className="step text-lg font-semibold text-center text-gray-500">Step 1 Name</div>
+        <div className={`step text-lg font-semibold text-center ${step >= 1 ? 'text-green-500' : 'text-gray-500'}`}>Step 1 Name</div>
           <svg
             width="30"
             height="30"
@@ -62,7 +58,7 @@ const App: React.FC = () => {
           </svg>
         </div>
         <div className="step-container items-center gap-5 cursor-pointer" onClick={() => setStep(2)}>
-          <div className="step text-lg font-semibold text-center text-gray-500">Step 2 Detail</div>
+          <div className={`step text-lg font-semibold text-center ${step >= 2 ? 'text-green-500' : 'text-gray-500'}`}>Step 2 Detail</div>
           <svg
             width="30"
             height="30"
@@ -76,7 +72,7 @@ const App: React.FC = () => {
           </svg>
         </div>
         <div className="step-container items-center gap-5 cursor-pointer" onClick={() => setStep(3)}>
-          <div className="step text-lg font-semibold text-center text-gray-500">Step 3 Finish</div>
+          <div className={`step text-lg font-semibold text-center ${step >= 3 ? 'text-green-500' : 'text-gray-500'}`}>Step 3 Finish</div>
           <svg
             width="30"
             height="30"
