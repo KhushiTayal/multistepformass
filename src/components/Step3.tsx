@@ -1,44 +1,50 @@
 import React, { useState } from 'react';
-import "./Step3.css";
+import StepperButtons from './StepperButtons'; // Import StepperButtons component
 
 interface Step3Props {
   formData: {
     code: string;
+    selectAnything: string;
   };
   prevStep: () => void;
   finish: () => void;
-  handleSubmit: () => void; // Define handleSubmit in Step3Props
+  handleChange: (name: string, value: string | boolean | string[], index: number) => void;
 }
 
-const Step3: React.FC<Step3Props> = ({ formData, prevStep, finish }) => {
-  //const { code } = formData;
+const Step3: React.FC<Step3Props> = ({ formData, handleChange, prevStep, finish }) => {
+  const {selectAnything } = formData;
 
-  const [isToggled, setIsToggled] = useState(false);
+  const [additionalDivs, setAdditionalDivs] = useState<number>(0);
 
-  const handleToggle = () => {
-    setIsToggled(!isToggled);
-    console.log(formData);
+  const handleAddDiv = () => {
+    setAdditionalDivs(additionalDivs + 1);
   };
 
-  return (
-    <div className="step3-container">
-      {/* <div className="header">
-        <div className="header-one">System Configurations Settings</div>
-        <div className="header-two">Please Provide the Required Details and complete all the steps</div>
-      </div> */}
+  const handleRadioClick = (value: string, index: number) => {
+    handleChange(`selectAnything-${index}`, value);
+    console.log("handleRadioClick clicked");
+  };  
 
-      <div className="toggle-copycode">
-        <div className="toggle-one">
-      <span className="step1-label">Toggle the option</span>
-      <button onClick={handleToggle} style={{ backgroundColor: isToggled ? 'white' : 'black' }}>
-        <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M7 0H15C15.9193 -1.36979e-08 16.8295 0.18106 17.6788 0.532843C18.5281 0.884626 19.2997 1.40024 19.9497 2.05025C20.5998 2.70026 21.1154 3.47194 21.4672 4.32122C21.8189 5.17049 22 6.08075 22 7C22 7.91925 21.8189 8.8295 21.4672 9.67878C21.1154 10.5281 20.5998 11.2997 19.9497 11.9497C19.2997 12.5998 18.5281 13.1154 17.6788 13.4672C16.8295 13.8189 15.9193 14 15 14H7C6.08075 14 5.1705 13.8189 4.32122 13.4672C3.47194 13.1154 2.70026 12.5998 2.05025 11.9497C1.40024 11.2997 0.884626 10.5281 0.532843 9.67878C0.18106 8.8295 0 7.91925 0 7C0 6.08075 0.18106 5.17049 0.532843 4.32122C0.884626 3.47194 1.40024 2.70026 2.05025 2.05025C2.70026 1.40024 3.47194 0.884626 4.32122 0.532843C5.1705 0.18106 6.08075 -1.36979e-08 7 0ZM15 10C15.7956 10 16.5587 9.68393 17.1213 9.12132C17.6839 8.55871 18 7.79565 18 7C18 6.20435 17.6839 5.44129 17.1213 4.87868C16.5587 4.31607 15.7956 4 15 4C14.2044 4 13.4413 4.31607 12.8787 4.87868C12.3161 5.44129 12 6.20435 12 7C12 7.79565 12.3161 8.55871 12.8787 9.12132C13.4413 9.68393 14.2044 10 15 10Z" fill="#757575"/>
-        </svg>
-      </button>
-      </div>
-      <div className="toggle-two">
-      <span className="step1-label">Copy this Link</span>
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  return (
+    <div className="w-[1320px] h-[1035px] p-10 gap-6 bg-white rounded-20 shadow-md flex flex-col">
+
+      {/* Existing Div */}
+      <div className="flex flex-col grid grid-cols-2 w-[1280px] h-[24px] gap-[80px]">
+        {/* Toggle option */}
+        <div className="flex w-[263px] h-[24px] justify-between">
+          <span className="block font-medium text-gray-700 font-poppins text-base font-semibold leading-6 text-left">Toggle the option</span>
+          <label className="switch">
+            <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+              <input type="checkbox" name="toggle" id="toggle" className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+              <label htmlFor="toggle" className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+            </div>
+          </label>
+        </div>
+        {/* Copy link */}
+        <div className="flex w-[312px] h-[24px] justify-between">
+          <span className="block font-medium text-gray-700 font-poppins text-base font-semibold leading-6 text-left">Copy this Link</span>
+          <span className="block font-medium text-green-700 font-poppins text-base font-semibold leading-6 text-left">#222242jdjsdj4</span>
+          <svg className="w-[24px] h-[24px]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1_122)">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M6 3C6 2.20435 6.31607 1.44129 6.87868 0.87868C7.44129 0.316071 8.20435 0 9 0L21 0C21.7956 0 22.5587 0.316071 23.1213 0.87868C23.6839 1.44129 24 2.20435 24 3V15C24 15.7956 23.6839 16.5587 23.1213 17.1213C22.5587 17.6839 21.7956 18 21 18H9C8.20435 18 7.44129 17.6839 6.87868 17.1213C6.31607 16.5587 6 15.7956 6 15V3ZM9 1.5C8.60218 1.5 8.22064 1.65804 7.93934 1.93934C7.65804 2.22064 7.5 2.60218 7.5 3V15C7.5 15.3978 7.65804 15.7794 7.93934 16.0607C8.22064 16.342 8.60218 16.5 9 16.5H21C21.3978 16.5 21.7794 16.342 22.0607 16.0607C22.342 15.7794 22.5 15.3978 22.5 15V3C22.5 2.60218 22.342 2.22064 22.0607 1.93934C21.7794 1.65804 21.3978 1.5 21 1.5H9ZM3 7.5C2.60218 7.5 2.22064 7.65804 1.93934 7.93934C1.65804 8.22064 1.5 8.60218 1.5 9V21C1.5 21.3978 1.65804 21.7794 1.93934 22.0607C2.22064 22.342 2.60218 22.5 3 22.5H15C15.3978 22.5 15.7794 22.342 16.0607 22.0607C16.342 21.7794 16.5 21.3978 16.5 21V19.5H18V21C18 21.7956 17.6839 22.5587 17.1213 23.1213C16.5587 23.6839 15.7956 24 15 24H3C2.20435 24 1.44129 23.6839 0.87868 23.1213C0.316071 22.5587 0 21.7956 0 21V9C0 8.20435 0.316071 7.44129 0.87868 6.87868C1.44129 6.31607 2.20435 6 3 6H4.5V7.5H3Z" fill="#757575"/>
 </g>
@@ -48,145 +54,43 @@ const Step3: React.FC<Step3Props> = ({ formData, prevStep, finish }) => {
 </clipPath>
 </defs>
 </svg>
+        </div>
+      </div>
 
-    </div>
-    </div>
+      {/* Select Anything Divs */}
+      <div className="flex flex-col space-y-2">
+        <span className="block font-medium text-gray-700 font-poppins text-base font-semibold leading-6 text-left">Select Anything</span>
+        <span className="font-poppins text-base font-normal text-left text-gray-400">lorem loe lorem lorem lorem</span>
 
-      <div className="select-anything-container">
-  <span className="step1-label">This is div - Select Radio btn and add the radio btn</span>
-  <span className="span-two">lorem loe lorem lorem lorem</span>
-  <div className="select">
-      <div className="sub-select-anything-container flex items-center">
-        <div className="mr-2">
-          <label className="select-radio-label">Option 1</label>
-        </div>
-        <input
-          type="radio"
-          name="selectAnything"
-          value="Option 1"
-          className="select-radio-input w-6 h-6"
-        />
-      </div>
-      <div className="sub-select-anything-container flex items-center">
-        <div className="mr-2">
-          <label className="select-radio-label">Option 2</label>
-        </div>
-        <input
-          type="radio"
-          name="selectAnything"
-          value="Option 2"
-          className="select-radio-input"
-        />
-      </div>
-      <div className="sub-select-anything-container flex items-center">
-        <div className="mr-2">
-          <label className="select-radio-label">Option 3</label>
-        </div>
-        <input
-          type="radio"
-          name="selectAnything"
-          value="Option 3"
-          className="select-radio-input"
-        />
-      </div>
-      <div className="sub-select-anything-container flex items-center">
-        <div className="mr-2">
-          <label className="select-radio-label">Option 4</label>
-        </div>
-        <input
-          type="radio"
-          name="selectAnything"
-          value="Option 4"
-          className="select-radio-input"
-        />
-      </div>
-      <div className="sub-select-anything-container flex items-center">
-        <div className="mr-2">
-          <label className="select-radio-label">Option 5</label>
-        </div>
-        <input
-          type="radio"
-          name="selectAnything"
-          value="Option 5"
-          className="select-radio-input"
-        />
-      </div>
+        {/* Render additional divs based on state */}
+        {[...Array(additionalDivs + 1)].map((_, index) => (
+          <div key={index}>
+            {index > 0 && <><span className="block font-poppins text-base font-semibold text-gray-400 leading-6">ADDED This is container - Select Radio btn and add the radio btn </span> <span className="font-poppins text-base font-normal text-left text-gray-400">lorem loe lorem lorem lorem</span></>}
+            <div className="grid grid-cols-3 gap-4">
+            {['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'].map(option => (
+    <div key={option} className={`flex items-center justify-between p-2 border rounded-md cursor-pointer ${selectAnything === option ? 'bg-green-100 border-green-500' : 'border-gray-300'}`} onClick={() => handleRadioClick(option, index)}>
+      <span>{option}</span>
+      <input
+        type="radio"
+        name="selectAnything"
+        value={option}
+        checked={selectAnything === option}
+        onChange={() => {}}
+        className="form-radio h-4 w-4 text-blue-600"
+      />
     </div>
-</div>
+  ))}
+            </div>
+          </div>
+        ))}
 
-<div className="select-anything-container">
-  <span className="step1-label">ADDED This is container - Select Radio btn</span>
-  <span className="span-two">lorem loe lorem lorem lorem</span>
-  <div className="select">
-      <div className="sub-select-anything-container flex items-center">
-        <div className="mr-2">
-          <label className="select-radio-label">Option 1</label>
-        </div>
-        <input
-          type="radio"
-          name="selectAnything"
-          value="Option 1"
-          className="select-radio-input w-6 h-6"
-        />
+        {/* Button to add one more div */}
+        <button className="w-[125px] h-[34px] px-5 py-2 gap-10 rounded-[8px] bg-gray-400 text-white" onClick={handleAddDiv}>Add whole div</button>
       </div>
-      <div className="sub-select-anything-container flex items-center">
-        <div className="mr-2">
-          <label className="select-radio-label">Option 2</label>
-        </div>
-        <input
-          type="radio"
-          name="selectAnything"
-          value="Option 2"
-          className="select-radio-input"
-        />
-      </div>
-      <div className="sub-select-anything-container flex items-center">
-        <div className="mr-2">
-          <label className="select-radio-label">Option 3</label>
-        </div>
-        <input
-          type="radio"
-          name="selectAnything"
-          value="Option 3"
-          className="select-radio-input"
-        />
-      </div>
-      <div className="sub-select-anything-container flex items-center">
-        <div className="mr-2">
-          <label className="select-radio-label">Option 4</label>
-        </div>
-        <input
-          type="radio"
-          name="selectAnything"
-          value="Option 4"
-          className="select-radio-input"
-        />
-      </div>
-      <div className="sub-select-anything-container flex items-center">
-        <div className="mr-2">
-          <label className="select-radio-label">Option 5</label>
-        </div>
-        <input
-          type="radio"
-          name="selectAnything"
-          value="Option 5"
-          className="select-radio-input"
-        />
-      </div>
-    </div>
-</div>
 
-<button className="add-buttn">Add whole div</button>
-      <div className="buttons">
-        <button className="cancel-button" onClick={prevStep}>
-          Cancel
-        </button>
-        <button className="previous-button" onClick={prevStep}>
-          Previous Step
-        </button>
-        <button className="next-button" onClick={finish}>
-          Finish
-        </button>
+      {/* Stepper Buttons */}
+      <div className="flex justify-end w-[1280px] h-[48px] gap-[40px]">
+        <StepperButtons step={3} prevStep={prevStep} nextStep={()=>{}} finish={finish} />
       </div>
     </div>
   );

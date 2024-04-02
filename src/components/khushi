@@ -1,0 +1,162 @@
+// Step1.tsx
+import React from 'react';
+// import './Step1.css';
+
+interface Step1Props {
+  formData: {
+    fullName: string;
+    phoneNumber: string;
+    gender: string;
+    phoneNumberType: string;
+    selectAnything: string;
+    consent: boolean;
+    businessActivityGroup: string;
+    additionalInputFields: string[];
+  };
+  handleChange: (name: string, value: string | boolean | string[]) => void;
+  nextStep: () => void;
+}
+
+const Step1: React.FC<Step1Props> = ({ formData, handleChange, nextStep }) => {
+  const { fullName, phoneNumber, gender, phoneNumberType, selectAnything, consent, businessActivityGroup, additionalInputFields } = formData;
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    handleChange(name, value);
+    console.log(businessActivityGroup);
+  };
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    handleChange(name, checked);
+  };
+
+  const handleAddInputField = () => {
+    handleChange('additionalInputFields', [...additionalInputFields, '']);
+  };
+
+  const handleInputFieldChange = (index: number, value: string) => {
+    const updatedFields = [...additionalInputFields];
+    updatedFields[index] = value;
+    handleChange('additionalInputFields', updatedFields);
+  };
+
+  const handleNext = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    nextStep();
+  };
+
+  const handleRadioClick = (value: string) => {
+    handleChange('selectAnything', value);
+  };
+
+  return (
+    <form onSubmit={handleNext} className="w-[1320px] h-[1035px] p-10 gap-6 bg-white rounded-20 shadow-md">
+      <div className="flex flex-col">
+        <div className="grid grid-cols-2 gap-6">
+          <div>
+            <label htmlFor="fullName" className="block font-medium text-gray-700">Enter your Full name</label>
+            <input
+              type="text"
+              name="fullName"
+              id="fullName"
+              value={fullName}
+              onChange={handleInputChange}
+              className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 w-full"
+              placeholder="Enter here"
+            />
+          </div>
+          <div>
+            <label htmlFor="phoneNumber" className="block font-medium text-gray-700">Enter Phone number</label>
+            <input
+              type="text"
+              name="phoneNumber"
+              id="phoneNumber"
+              value={phoneNumber}
+              onChange={handleInputChange}
+              className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 w-full"
+            />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-6">
+          <div className="flex flex-col space-y-2">
+            <span className="font-medium text-gray-700">Gender</span>
+            <span className="text-gray-500">Select one of them</span>
+            <div className="flex space-x-4">
+              <label className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="Male"
+                  checked={gender === 'Male'}
+                  onChange={handleInputChange}
+                  className="form-radio h-4 w-4 text-blue-600"
+                />
+                <span>Male</span>
+              </label>
+              <label className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="Female"
+                  checked={gender === 'Female'}
+                  onChange={handleInputChange}
+                  className="form-radio h-4 w-4 text-blue-600"
+                />
+                <span>Female</span>
+              </label>
+              <label className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  name="gender"
+                  value="Prefer not to say"
+                  checked={gender === 'Prefer not to say'}
+                  onChange={handleInputChange}
+                  className="form-radio h-4 w-4 text-blue-600"
+                />
+                <span>Prefer not to say</span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <label htmlFor="phoneNumberType" className="block font-medium text-gray-700">Phone Number Type</label>
+            <select
+              name="phoneNumberType"
+              id="phoneNumberType"
+              value={phoneNumberType}
+              onChange={handleInputChange}
+              className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="Mobile">Select from the here</option>
+              <option value="Home">Home</option>
+              <option value="Work">Work</option>
+            </select>
+          </div>
+        </div>
+        <div className="flex flex-col space-y-4">
+          <span className="font-medium text-gray-700">Additional Input Fields</span>
+          <span className="text-gray-500">Add more fields if you want</span>
+          {additionalInputFields.map((value, index) => (
+            <div key={index} className="flex gap-4">
+              <input
+                type="text"
+                value={value}
+                onChange={(e) => handleInputFieldChange(index, e.target.value)}
+                className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500"
+                placeholder={`Field ${index + 1}`}
+              />
+              {index === additionalInputFields.length - 1 && (
+                <button type="button" onClick={handleAddInputField} className="px-4 py-2 border border-blue-500 rounded-md text-blue-500 hover:bg-blue-500 hover:text-white">Add Field</button>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-end">
+          <button type="submit" className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Next</button>
+        </div>
+      </div>
+    </form>
+  );
+};
+
+export default Step1;

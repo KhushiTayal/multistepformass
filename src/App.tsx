@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import Step1 from './components/Step1';
 import Step2 from './components/Step2';
 import Step3 from './components/Step3';
-import "./App.css";
-import "@fontsource/poppins"; // Defaults to weight 400
-import "@fontsource/poppins/400.css"; // Specify weight
-import "@fontsource/poppins/400-italic.css"; // Specify weight and style
 
 const App: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -32,10 +28,10 @@ const App: React.FC = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = () => {
-    console.log('Form submitted:', formData);
-    // Here you can implement the logic to send formData to Xano backend
-  };
+  // const handleSubmit = () => {
+  //   console.log('Form submitted:', formData);
+  //   // Here you can implement the logic to send formData to Xano backend
+  // };
 
   const finish = () => {
     console.log('Finishing the step');
@@ -43,14 +39,14 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="step1-container">
-      <div className="header">
-        <div className="header-one">System Configurations Settings </div>
-        <div className="header-two">Please Provide the Required Details and complete all the steps</div>
-        </div>
+    <div className="w-[1440px] h-[1339px] p-10 gap-6 rounded-[20px] shadow-md font-poppins items-center">
+      <div className="p-8 gap-3 bg-green-100 rounded-[20px]">
+        <div className="text-2xl font-semibold text-gray-800">System Configurations Settings</div>
+        <div className="text-sm font-normal text-gray-600">Please Provide the Required Details and complete all the steps</div>
+      </div>
 
-        <div className="stepper">
-        <div className="step-container" onClick={() => setStep(1)}>
+      <div className="stepper flex justify-between p-5 gap-10">
+        <div className="step-container flex items-center gap-5 cursor-pointer" onClick={() => setStep(1)}>
           <div className="step">Step 1 Name</div>
           <svg
             width="30"
@@ -58,13 +54,13 @@ const App: React.FC = () => {
             viewBox="0 0 30 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            style={{ cursor: 'pointer' }}
+            className="cursor-pointer"
           >
             <circle cx="15" cy="15" r="14.5" fill="#707070" />
             <circle cx="15" cy="15" r="8.5" fill={step >= 1 ? '#3CC055' : 'white'} />
           </svg>
         </div>
-        <div className="step-container" onClick={() => setStep(2)}>
+        <div className="step-container flex items-center gap-5 cursor-pointer" onClick={() => setStep(2)}>
           <div className="step">Step 2 Detail</div>
           <svg
             width="30"
@@ -72,13 +68,13 @@ const App: React.FC = () => {
             viewBox="0 0 30 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            style={{ cursor: 'pointer' }}
+            className="cursor-pointer"
           >
             <circle cx="15" cy="15" r="14.5" fill="#707070" />
             <circle cx="15" cy="15" r="8.5" fill={step >= 2 ? '#3CC055' : 'white'} />
           </svg>
         </div>
-        <div className="step-container" onClick={() => setStep(3)}>
+        <div className="step-container flex items-center gap-5 cursor-pointer" onClick={() => setStep(3)}>
           <div className="step">Step 3 Finish</div>
           <svg
             width="30"
@@ -86,17 +82,29 @@ const App: React.FC = () => {
             viewBox="0 0 30 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            style={{ cursor: 'pointer' }}
+            className="cursor-pointer"
           >
             <circle cx="15" cy="15" r="14.5" fill="#707070" />
             <circle cx="15" cy="15" r="8.5" fill={step >= 3 ? '#3CC055' : 'white'} />
           </svg>
         </div>
       </div>
-        
-      {step === 1 && <Step1 formData={formData} handleChange={handleChange} nextStep={nextStep} />}
-      {step === 2 && <Step2 formData={formData} handleChange={handleChange} nextStep={nextStep} prevStep={prevStep} />}
-      {step === 3 && <Step3 formData={formData} prevStep={prevStep} handleSubmit={handleSubmit} finish={finish} />}
+
+      {step === 1 && (
+        <>
+          <Step1 formData={formData} handleChange={handleChange} nextStep={nextStep} />
+        </>
+      )}
+      {step === 2 && (
+        <>
+          <Step2 formData={formData} handleChange={handleChange} nextStep={nextStep} prevStep={prevStep} />
+        </>
+      )}
+      {step === 3 && (
+        <>
+          <Step3 formData={formData} handleChange={handleChange} prevStep={prevStep} finish={finish} />
+        </>
+      )}
     </div>
   );
 };
