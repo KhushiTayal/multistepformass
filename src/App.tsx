@@ -46,22 +46,22 @@ const App: React.FC = () => {
       </div>
 
       <div className="stepper flex justify-between p-5 gap-10">
-        <div className="step-container flex items-center gap-5 cursor-pointer" onClick={() => setStep(1)}>
-          <div className="step">Step 1 Name</div>
+        <div className="step-container items-center gap-5 cursor-pointer" onClick={() => setStep(1)}>
+          <div className="step text-lg font-semibold text-center text-gray-500">Step 1 Name</div>
           <svg
             width="30"
             height="30"
             viewBox="0 0 30 30"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="cursor-pointer"
+            className="cursor-pointer items-center"
           >
             <circle cx="15" cy="15" r="14.5" fill="#707070" />
             <circle cx="15" cy="15" r="8.5" fill={step >= 1 ? '#3CC055' : 'white'} />
           </svg>
         </div>
-        <div className="step-container flex items-center gap-5 cursor-pointer" onClick={() => setStep(2)}>
-          <div className="step">Step 2 Detail</div>
+        <div className="step-container items-center gap-5 cursor-pointer" onClick={() => setStep(2)}>
+          <div className="step text-lg font-semibold text-center text-gray-500">Step 2 Detail</div>
           <svg
             width="30"
             height="30"
@@ -74,8 +74,8 @@ const App: React.FC = () => {
             <circle cx="15" cy="15" r="8.5" fill={step >= 2 ? '#3CC055' : 'white'} />
           </svg>
         </div>
-        <div className="step-container flex items-center gap-5 cursor-pointer" onClick={() => setStep(3)}>
-          <div className="step">Step 3 Finish</div>
+        <div className="step-container items-center gap-5 cursor-pointer" onClick={() => setStep(3)}>
+          <div className="step text-lg font-semibold text-center text-gray-500">Step 3 Finish</div>
           <svg
             width="30"
             height="30"
