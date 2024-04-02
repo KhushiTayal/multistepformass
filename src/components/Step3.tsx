@@ -62,7 +62,7 @@ const Step3: React.FC<Step3Props> = ({ formData, handleChange, prevStep, finish 
 
       {/* Select Anything Divs */}
       <div className="flex flex-col space-y-2">
-        <span className="block font-medium text-gray-700 font-poppins text-base font-semibold leading-6 text-left">Select Radio</span>
+        <span className="block font-medium text-gray-700 font-poppins text-base font-semibold leading-6 text-left">This is div - Select Radio btn and add the radio btn </span>
         <span className="font-poppins text-base font-normal text-left text-gray-400">lorem loe lorem lorem lorem</span>
 
         {/* Render additional divs based on state */}
