@@ -13,7 +13,7 @@ interface Step1Props {
     consent: boolean;
     businessActivityGroup: string;
     additionalInputFields: string[];
-    nextStep: () => void;
+    // nextStep: () => void;
   };
   handleChange: (name: string, value: string | boolean | string[]) => void;
   nextStep: () => void;

@@ -21,7 +21,7 @@ const Step3: React.FC<Step3Props> = ({ formData, handleChange, prevStep, finish 
   };
 
   const handleRadioClick = (value: string, index: number) => {
-    handleChange(`selectAnything-${index}`, value);
+    handleChange(`selectAnything-${index}`, value, index);
     console.log("handleRadioClick clicked");
   };  
 
