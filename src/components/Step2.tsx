@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import StepperButtons from './StepperButtons'; // Import StepperButtons component
+import StepperButtons from './StepperButtons';
 
 interface Step2Props {
   formData: {

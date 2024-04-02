@@ -1,6 +1,5 @@
 // Step1.tsx
 import React from 'react';
-// import './Step1.css';
 import StepperButtons from './StepperButtons';
 
 interface Step1Props {

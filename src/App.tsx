@@ -10,6 +10,7 @@ const App: React.FC = () => {
     gender: '',
     phoneNumberType: '',
     selectAnything: '',
+    selectRadio: '',
     consent: false,
     businessActivityGroup: '',
     additionalInputFields: [''],

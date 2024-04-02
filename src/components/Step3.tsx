@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import StepperButtons from './StepperButtons'; // Import StepperButtons component
+import StepperButtons from './StepperButtons';
+import ToggleSwitch from './ToggleSwitch';
 
 interface Step3Props {
   formData: {
     code: string;
-    selectAnything: string;
+    selectRadio: string;
   };
   prevStep: () => void;
   finish: () => void;
@@ -12,7 +13,7 @@ interface Step3Props {
 }
 
 const Step3: React.FC<Step3Props> = ({ formData, handleChange, prevStep, finish }) => {
-  const {selectAnything } = formData;
+  const {selectRadio } = formData;
 
   const [additionalDivs, setAdditionalDivs] = useState<number>(0);
 
@@ -20,10 +21,17 @@ const Step3: React.FC<Step3Props> = ({ formData, handleChange, prevStep, finish 
     setAdditionalDivs(additionalDivs + 1);
   };
 
+  const [formDataState, setFormData] = useState<Step3Props['formData']>(formData);
+
   const handleRadioClick = (value: string, index: number) => {
-    handleChange(`selectAnything-${index}`, value, index);
-    console.log("handleRadioClick clicked");
-  };  
+    const updatedFormData = {
+      ...formDataState,
+      selectRadio: value
+    };
+    handleChange(`selectRadio`, value, index);
+    setFormData(updatedFormData);
+  };
+  
 
   return (
     <div className="w-[1320px] h-[1035px] p-10 gap-6 bg-white rounded-20 shadow-md flex flex-col">
@@ -33,12 +41,7 @@ const Step3: React.FC<Step3Props> = ({ formData, handleChange, prevStep, finish 
         {/* Toggle option */}
         <div className="flex w-[263px] h-[24px] justify-between">
           <span className="block font-medium text-gray-700 font-poppins text-base font-semibold leading-6 text-left">Toggle the option</span>
-          <label className="switch">
-            <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-              <input type="checkbox" name="toggle" id="toggle" className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
-              <label htmlFor="toggle" className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-            </div>
-          </label>
+          <ToggleSwitch />
         </div>
         {/* Copy link */}
         <div className="flex w-[312px] h-[24px] justify-between">
@@ -59,7 +62,7 @@ const Step3: React.FC<Step3Props> = ({ formData, handleChange, prevStep, finish 
 
       {/* Select Anything Divs */}
       <div className="flex flex-col space-y-2">
-        <span className="block font-medium text-gray-700 font-poppins text-base font-semibold leading-6 text-left">Select Anything</span>
+        <span className="block font-medium text-gray-700 font-poppins text-base font-semibold leading-6 text-left">Select Radio</span>
         <span className="font-poppins text-base font-normal text-left text-gray-400">lorem loe lorem lorem lorem</span>
 
         {/* Render additional divs based on state */}
@@ -67,14 +70,14 @@ const Step3: React.FC<Step3Props> = ({ formData, handleChange, prevStep, finish 
           <div key={index}>
             {index > 0 && <><span className="block font-poppins text-base font-semibold text-gray-400 leading-6">ADDED This is container - Select Radio btn and add the radio btn </span> <span className="font-poppins text-base font-normal text-left text-gray-400">lorem loe lorem lorem lorem</span></>}
             <div className="grid grid-cols-3 gap-4">
-            {['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'].map(option => (
-    <div key={option} className={`flex items-center justify-between p-2 border rounded-md cursor-pointer ${selectAnything === option ? 'bg-green-100 border-green-500' : 'border-gray-300'}`} onClick={() => handleRadioClick(option, index)}>
-      <span>{option}</span>
+            {['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'].map((option, optionIndex) => (
+  <div key={option} className={`flex items-center justify-between p-2 border rounded-md cursor-pointer ${formData.selectRadio === option ? 'bg-green-100 border-green-500' : 'border-gray-300'}`} onClick={() => handleRadioClick(option, optionIndex)}>
+  <span>{option}</span>
       <input
         type="radio"
-        name="selectAnything"
+        name={`selectRadio-${optionIndex}`}
         value={option}
-        checked={selectAnything === option}
+        checked={selectRadio === option}
         onChange={() => {}}
         className="form-radio h-4 w-4 text-blue-600"
       />
