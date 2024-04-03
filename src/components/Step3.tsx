@@ -68,7 +68,7 @@ const Step3: React.FC<Step3Props> = ({ formData, handleChange, prevStep, finish 
         {/* Render additional divs based on state */}
         {[...Array(additionalDivs + 1)].map((_, index) => (
           <div key={index}>
-            {index > 0 && <><span className="block font-poppins text-base font-semibold text-gray-400 leading-6">ADDED This is container - Select Radio btn and add the radio btn </span> <span className="font-poppins text-base font-normal text-left text-gray-400">lorem loe lorem lorem lorem</span></>}
+            {index > 0 && <><span className="block font-poppins text-base font-semibold text-gray-400 leading-6 pt-[20px]">ADDED This is container - Select Radio btn and add the radio btn </span> <span className="font-poppins text-base font-normal text-left text-gray-400">lorem loe lorem lorem lorem</span></>}
             <div className="grid grid-cols-3 gap-4">
             {['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'].map((option, optionIndex) => (
   <div key={option} className={`flex items-center justify-between p-2 border rounded-md cursor-pointer ${formData.selectRadio === option ? 'bg-green-100 border-green-500' : 'border-gray-300'}`} onClick={() => handleRadioClick(option, optionIndex)}>
@@ -79,7 +79,7 @@ const Step3: React.FC<Step3Props> = ({ formData, handleChange, prevStep, finish 
         value={option}
         checked={selectRadio === option}
         onChange={() => {}}
-        className="form-radio h-4 w-4 text-blue-600"
+        className="form-radio h-4 w-4 text-blue-600 pt-[12px] pr-[16px] pb-[12px] pl-[16px]"
       />
     </div>
   ))}

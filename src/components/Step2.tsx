@@ -43,7 +43,7 @@ const Step2: React.FC<Step2Props> = ({ formData, handleChange, prevStep, nextSte
           <input
             type="date"
             id="birthDate"
-            className="w-[452px] h-[45px] p-[12px 16px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
+            className="w-[452px] h-[45px] pt-[12px] pr-[16px] pb-[12px] pl-[16px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
             value={birthDate}
             onChange={(e) => handleChange('birthDate', e.target.value)}
           />
@@ -58,7 +58,7 @@ const Step2: React.FC<Step2Props> = ({ formData, handleChange, prevStep, nextSte
           <label htmlFor="language" className="block font-medium text-gray-700 font-poppins text-base font-semibold leading-6 text-left mb-[10px] mt-[10px]">Language</label>
           <select
             id="language"
-            className="w-[452px] h-[45px] p-[12px 16px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
+            className="w-[452px] h-[45px] pt-[12px] pr-[16px] pb-[12px] pl-[16px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
             value={language}
             onChange={(e) => handleChange('language', e.target.value)}
           >
@@ -84,7 +84,7 @@ const Step2: React.FC<Step2Props> = ({ formData, handleChange, prevStep, nextSte
               type="email"
               value={value}
               onChange={(e) => handleEmailChange(index, e.target.value)}
-              className="w-[730px] h-[45px] p-[12px 16px] mb-[20px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
+              className="w-[730px] h-[45px] pt-[12px] pr-[16px] pb-[12px] pl-[16px] mb-[20px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
               placeholder={`Email ${index + 1}`}
             />
             {index === additionalEmails.length - 1 && (
@@ -92,7 +92,7 @@ const Step2: React.FC<Step2Props> = ({ formData, handleChange, prevStep, nextSte
               <button
                 type="button"
                 onClick={handleAddEmailField}
-                className="w-[65px] h-[34px] mb-[10px] px-5 gap-10 rounded-[8px] bg-gray-400 text-white mt-auto"
+                className="w-[65px] h-[34px] mb-[10px] px-5 gap-10 rounded-[8px] bg-gray-600 text-white mt-auto"
               >
                 Add
               </button>
@@ -112,7 +112,7 @@ const Step2: React.FC<Step2Props> = ({ formData, handleChange, prevStep, nextSte
           <input
             type="file"
             id="file"
-            className="w-[730px] h-[45px] p-[12px 16px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
+            className="w-[730px] h-[45px] pt-[12px] pr-[16px] pb-[12px] pl-[16px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
             onChange={handleFileChange}
           />
         </div>

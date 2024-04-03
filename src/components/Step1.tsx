@@ -63,7 +63,7 @@ const Step1: React.FC<Step1Props> = ({ formData, handleChange, nextStep }) => {
   id="fullName"
   value={fullName}
   onChange={handleInputChange}
-  className="w-[452px] h-[45px] p-[12px 16px 12px 16px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
+  className="w-[452px] h-[45px] pt-[12px] pr-[16px] pb-[12px] pl-[16px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
   placeholder="Enter here"
 />
 
@@ -83,7 +83,7 @@ const Step1: React.FC<Step1Props> = ({ formData, handleChange, nextStep }) => {
               id="phoneNumber"
               value={phoneNumber}
               onChange={handleInputChange}
-              className="w-[452px] h-[45px] p-[12px 16px 12px 16px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
+              className="w-[452px] h-[45px] pt-[12px] pr-[16px] pb-[12px] pl-[16px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
             />
           </div>
         </div>
@@ -134,7 +134,7 @@ const Step1: React.FC<Step1Props> = ({ formData, handleChange, nextStep }) => {
               id="phoneNumberType"
               value={phoneNumberType}
               onChange={handleInputChange}
-              className="w-[452px] h-[45px] p-[12px 16px 12px 16px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
+              className="w-[452px] h-[45px] pt-[12px] pr-[16px] pb-[12px] pl-[16px] border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
             >
               <option value="Mobile">Select from the here</option>
               <option value="Home">Home</option>
@@ -156,7 +156,7 @@ const Step1: React.FC<Step1Props> = ({ formData, handleChange, nextStep }) => {
         value={option}
         checked={selectAnything === option}
         onChange={() => {}}
-        className="form-radio h-4 w-4 text-blue-600"
+        className="form-radio h-4 w-4 pt-[12px] pr-[16px] pb-[12px] pl-[16px] checked:border-2 checked:bg-transparent checked:border-green-500 checked:border-solid checked:border-2"
       />
     </div>
   ))}
@@ -185,7 +185,7 @@ const Step1: React.FC<Step1Props> = ({ formData, handleChange, nextStep }) => {
                 type="text"
                 value={value}
                 onChange={(e) => handleInputFieldChange(index, e.target.value)}
-                className="w-[730px] h-[45px] p-[12px 16px 12px 16px] gap-0 border-[1px] border-gray-300 rounded-[4px] focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
+                className="w-[730px] h-[45px] pt-[12px] pr-[16px] pb-[12px] pl-[16px] gap-0 border-[1px] border-gray-300 rounded-[4px] focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 bg-white"
                 placeholder={`Field ${index + 1}`}
               />
               {index === additionalInputFields.length - 1 && (

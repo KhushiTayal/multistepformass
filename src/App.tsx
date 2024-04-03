@@ -43,49 +43,76 @@ const App: React.FC = () => {
       </div>
 
       <div className="stepper flex justify-between p-5 gap-10">
-        <div className="step-container items-center gap-5 cursor-pointer" onClick={() => setStep(1)}>
+      <div className="step-container items-center gap-5 cursor-pointer" onClick={() => setStep(1)}>
         <div className={`step text-lg font-semibold text-center ${step >= 1 ? 'text-green-500' : 'text-gray-500'}`}>Step 1 Name</div>
-          <svg
-            width="30"
-            height="30"
-            viewBox="0 0 30 30"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="cursor-pointer items-center"
-          >
-            <circle cx="15" cy="15" r="14.5" fill="#707070" />
-            <circle cx="15" cy="15" r="8.5" fill={step >= 1 ? '#3CC055' : 'white'} />
-          </svg>
-        </div>
-        <div className="step-container items-center gap-5 cursor-pointer" onClick={() => setStep(2)}>
-          <div className={`step text-lg font-semibold text-center ${step >= 2 ? 'text-green-500' : 'text-gray-500'}`}>Step 2 Detail</div>
-          <svg
-            width="30"
-            height="30"
-            viewBox="0 0 30 30"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="cursor-pointer"
-          >
-            <circle cx="15" cy="15" r="14.5" fill="#707070" />
-            <circle cx="15" cy="15" r="8.5" fill={step >= 2 ? '#3CC055' : 'white'} />
-          </svg>
-        </div>
-        <div className="step-container items-center gap-5 cursor-pointer" onClick={() => setStep(3)}>
-          <div className={`step text-lg font-semibold text-center ${step >= 3 ? 'text-green-500' : 'text-gray-500'}`}>Step 3 Finish</div>
-          <svg
-            width="30"
-            height="30"
-            viewBox="0 0 30 30"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="cursor-pointer"
-          >
-            <circle cx="15" cy="15" r="14.5" fill="#707070" />
-            <circle cx="15" cy="15" r="8.5" fill={step >= 3 ? '#3CC055' : 'white'} />
-          </svg>
-        </div>
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 30 30"
+          fill={step >= 1 ? '#3CC055' : '#707070'}
+          xmlns="http://www.w3.org/2000/svg"
+          className="cursor-pointer items-center"
+        >
+          <circle cx="15" cy="15" r="14.5" />
+          <circle cx="15" cy="15" r="8.5" fill={step >= 1 ? '#3CC055' : 'white'} />
+          {step >= 1 && (
+            <path
+              d="M8 15L12 19L22 9"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          )}
+        </svg>
       </div>
+      <div className="step-container items-center gap-5 cursor-pointer" onClick={() => setStep(2)}>
+        <div className={`step text-lg font-semibold text-center ${step >= 2 ? 'text-green-500' : 'text-gray-500'}`}>Step 2 Detail</div>
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 30 30"
+          fill={step >= 2 ? '#3CC055' : '#707070'}
+          xmlns="http://www.w3.org/2000/svg"
+          className="cursor-pointer"
+        >
+          <circle cx="15" cy="15" r="14.5" />
+          <circle cx="15" cy="15" r="8.5" fill={step >= 2 ? '#3CC055' : 'white'} />
+          {step >= 2 && (
+            <path
+              d="M8 15L12 19L22 9"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          )}
+        </svg>
+      </div>
+      <div className="step-container items-center gap-5 cursor-pointer" onClick={() => setStep(3)}>
+        <div className={`step text-lg font-semibold text-center ${step >= 3 ? 'text-green-500' : 'text-gray-500'}`}>Step 3 Finish</div>
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 30 30"
+          fill={step >= 3 ? '#3CC055' : '#707070'}
+          xmlns="http://www.w3.org/2000/svg"
+          className="cursor-pointer"
+        >
+          <circle cx="15" cy="15" r="14.5" />
+          <circle cx="15" cy="15" r="8.5" fill={step >= 3 ? '#3CC055' : 'white'} />
+          {step >= 3 && (
+            <path
+              d="M8 15L12 19L22 9"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          )}
+        </svg>
+      </div>
+    </div>
 
       {step === 1 && (
         <>
